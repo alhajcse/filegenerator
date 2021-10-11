@@ -97,45 +97,6 @@ public class UserPDFExporter {
         Document document = new Document(PageSize.A4);
         PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
 
-
-//        document.open();
-//        Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
-//        font.setSize(18);
-//        font.setColor(BaseColor.BLUE);
-//
-//
-//
-//        // add header and footer
-//        HeaderFooterPageEvent event = new HeaderFooterPageEvent();
-//        writer.setPageEvent(event);
-
-
-//        Image img = Image.getInstance("http://placehold.it/120x120&text=image1");
-//        img.scaleToFit(100, 100);
-//        float offsetX = (140 - img.getScaledWidth()) / 2;
-//        float offsetY = (140 - img.getScaledHeight()) / 2;
-        //img.setAbsolutePosition(0, PageSize.A4.getHeight() - img.getScaledHeight());
-
-        //img.setAbsolutePosition(0 + offsetX, 0 + offsetY);
-       // img.setAlignment(Element.ALIGN_CENTER);
-
-//        Paragraph p = new Paragraph("", font);
-//        p.setAlignment(Paragraph.ALIGN_CENTER);
-//
-//        document.add(p);
-
-//        PdfPTable table = new PdfPTable(5);
-//        table.setWidthPercentage(100f);
-//        table.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 1.5f});
-//        table.setPaddingTop(100);
-//
-//        addTableHeader(table);
-//        writeTableData(table);
-//
-//        document.add(table);
-//
-//        document.close();
-
     }
 
 

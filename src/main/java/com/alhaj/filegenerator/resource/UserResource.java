@@ -5,12 +5,14 @@ import com.alhaj.filegenerator.service.UserServices;
 import com.alhaj.filegenerator.utils.UserExcelExporter;
 import com.alhaj.filegenerator.utils.UserPDFExporter;
 import com.itextpdf.text.DocumentException;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -61,6 +63,14 @@ public class UserResource {
         UserExcelExporter excelExporter = new UserExcelExporter(listUsers);
 
         excelExporter.export(response);
+    }
+
+
+
+
+    @GetMapping("/report/{format}")
+    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
+        return service.exportReport(format);
     }
 
 }
