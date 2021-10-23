@@ -1,11 +1,13 @@
 package com.alhaj.filegenerator.service;
 
 import com.alhaj.filegenerator.entity.User;
+import com.itextpdf.text.Document;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -37,7 +39,7 @@ public class UserServices {
     }
 
 
-    public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
+    public String exportReport(String reportFormat, HttpServletResponse response) throws FileNotFoundException, JRException {
         String path = "/Users/user/Downloads/Report";
         List<User> employees = listAll();
 
@@ -54,7 +56,14 @@ public class UserServices {
             JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "/employees.html");
         }
         if (reportFormat.equalsIgnoreCase("pdf")) {
-            JasperExportManager.exportReportToPdfFile(jasperPrint, path + "/employees.pdf");
+           // Output PDF to path
+          //  JasperExportManager.exportReportToPdfFile(jasperPrint, path + "/employees.pdf");
+
+            // Output PDF to HTTP Response
+            response.setContentType("application/pdf");
+            response.addHeader("Content-disposition", "attachment; filename=report.pdf");
+            JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+
         }
         }catch (Exception e){
             System.out.println(e.getMessage());

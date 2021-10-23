@@ -69,8 +69,8 @@ public class UserResource {
 
 
     @GetMapping("/report/{format}")
-    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
-        return service.exportReport(format);
+    public String generateReport(HttpServletResponse response,@PathVariable String format) throws FileNotFoundException, JRException {
+        return service.exportReport(format,response);
     }
 
 }

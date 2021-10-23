@@ -113,10 +113,10 @@ public class UserPDFExporter {
             PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
             document.open();
            // addLogo(document);
-            addHeader(writer);
-          //  addDocTitle(document);
-            createTable(document,noOfColumns);
-            addFooter(document);
+           // addHeader(writer);
+           // addDocTitle(document);
+            // createTable(document,noOfColumns);
+            // addFooter(document);
             document.close();
             System.out.println("------------------Your PDF Report is ready!-------------------------");
 
